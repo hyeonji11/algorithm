@@ -159,3 +159,35 @@ for(int j=0; j<n-size; j++) {
   answer[i] = " "+answer[i];
 }
 ```
+
+## 9. 실패율(FailureRate.java)
+
+HashMap을 이용해 처음엔 스테이지, 도달한 사람 수를 담고, 다음엔 스테이지별 실패율을 담았다.
+value 값으로 내림차순 정렬하면서 value값이 같으면 key 오름차순으로 정렬했다.
+
+```
+Collections.sort(list, new Comparator<Map.Entry<Integer, Double>>() {
+  @Override
+  public int compare(Map.Entry<Integer, Double> o1, Map.Entry<Integer,Double> o2) {
+    if(o2.getValue().compareTo(o1.getValue()) == 0) {
+      return o1.getKey().compareTo(o2.getKey());  //value가 같으면 key 오름차순
+    } else
+      return o2.getValue().compareTo(o1.getValue());  //value 내림차순
+  }
+});
+```
+
+시간 초과는 아니지만 테스트 케이스를 통과하는 시간이 느리다는 점을 더 생각해봐야 한다.
+
+## 10. 키패드 누르기(PressKeypad.java)
+
+키패드를 2차원 배열이라고 생각하고 왼손, 오른손의 엄지 위치를 (x, y)로 표시했다.
+
+누를 번호 배열의 길이만큼 반복하면서 눌러야 되는 손의 위치를 누를 번호의 위치로 바꾸고, String 배열에 "L" 또는 "R"을 넣는 작업을 구현했다.
+
+누를 번호마다 눌러야하는 손가락을 판단하는 것은 3으로 나눴을 때 나머지로 판단했다.
+
+마지막에 String 배열을 String.join()을 이용해 한번에 String 문자열로 바꾼 뒤 리턴시켰다.
+```
+answer = String.join("", result);
+```
