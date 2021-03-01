@@ -191,3 +191,43 @@ Collections.sort(list, new Comparator<Map.Entry<Integer, Double>>() {
 ```
 answer = String.join("", result);
 ```
+
+## 11. 다트 게임(DartGame.java)
+
+점수, 보너스, 옵션을 if-else문으로 각각 다른 수식을 적용했고, 각각 판별하는 조건은 정규식을 이용해서 구현했다.
+```
+if(Pattern.matches("[0-9]", arr[i])) {...}
+```
+
+전체적으로 구현에 어려움은 없었지만 숫자 0과 10에 들어가는 0을 구분해서 처리하는 부분에서 오류가 많이 났다.
+```
+if(Integer.parseInt(arr[i]) == 0) {
+  if(i != 0 && Pattern.matches("[0-9]", arr[i-1])) {
+    stage[cnt-1] = 10;
+    continue;
+  }
+}
+```
+0 앞에 문자가 있고, 그 문자가 숫자라면 10이기 때문에 전단계에 1을 넣었던 부분에 10으로 대체하도록 구현했다.
+
+## 12. 최대공약수와 최소공배수(GCD_LCM.java)
+
+처음 최대공약수를 구하는 작업은 1부터 두 정수 중 작은 정수까지 1씩 증가시키면서 두 수가 나눠지는 제일 큰 수를 구하는 코드로 작성했는데 다 풀고 유클리드 호제법을 알게 되어서 재귀함수를 이용해 구현했다.
+
+첫 코드
+```
+int num = n < m ? n : m;
+for(int i=1; i<=num; i++) {
+  if(n % i==0 && m%i == 0) {
+    answer[0] = i;
+  }
+}
+```
+
+유클리드 호제법
+```
+public static int gcd(int a, int b) {
+  if(b==0) return a;
+  return gcd(b, a%b);
+}
+```
