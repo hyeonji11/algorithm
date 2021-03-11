@@ -90,3 +90,11 @@ while(k>0 && sb.length() < numLen) {
   sb.append(arr[maxIdx]);
 }
 ```
+
+## 6. 오픈채팅방(OpenChattingRoom.java)
+
+HashMap에 대해 알고있으면 쉽게 풀 수 있는 문제였다.
+record배열 요소의 첫 단어가 Enter 또는 Change라면 HashMap에 <유저아이디, 닉네임> 형식으로 저장했다.
+
+그 후엔 record 요소의 첫 단어가 Enter 또는 Leave 면 그 요소의 유저아이디로 최종 닉네임을 찾아서 각각 맞는 문구를 붙여 ArrayList에 추가했다.
+마지막엔 ArrayList를 배열로 바꿔서 리턴했다.
