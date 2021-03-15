@@ -115,3 +115,16 @@ if(idx<truck_weights.length && truck_weights[idx]+curWeight <= weight) {
 ```
 
 위 과정을 반복하고 bridge_time이 비었을 때 종료하도록 구현했다.
+
+## 8. 스킬트리(SkillTree.java)
+
+정규식을 이용해서 skill_trees의 원소에 skill 문자열을 뺀 다른 문자들을 ""로 대체하도록 구현했다.
+```
+skill_trees[i] = skill_trees[i].replaceAll("[^"+skill+"]", "");
+```
+
+그 뒤엔 skill을 skill_trees의 원소 길이에 맞춰서 자르고 두 문자열이 일치하는지 비교하여 일치하면 answer를 1씩 올리도록 구현했다.
+```
+String str = skill.substring(0, skill_trees[i].length());
+if(str.equals(skill_trees[i])) answer++;
+```
