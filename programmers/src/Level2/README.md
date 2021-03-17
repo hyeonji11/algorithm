@@ -128,3 +128,17 @@ skill_trees[i] = skill_trees[i].replaceAll("[^"+skill+"]", "");
 String str = skill.substring(0, skill_trees[i].length());
 if(str.equals(skill_trees[i])) answer++;
 ```
+
+## 9. 튜플(Tuple.java)
+
+일단 정규식을 이용해서 문자 '{', '}' 두개를 제거하는 작업을 했다.
+```
+String str[] = s.replaceAll("[{}]", "").split(",");
+```
+
+그 뒤엔 HashMap을 이용해서 튜플의 원소들을 각각 key로 설정하고, 튜플 표현 집합 s에 key들의 횟수를 세서 value에 넣었다.
+
+다 넣고 나서 value값을 기준으로 내림차순으로 정렬한 후 value를 answer 배열에 담아 리턴했다.
+
+다른 사람의 풀이를 보니 HashSet을 이용하면 더 간단하게 풀 수 있었다. HashSet에 add() 메소드는 인자로 전달된 아이템이 HashSet에 없다면 true, 있다면 false를 리턴하기 때문에 이 특성을 이용해서 풀 수 있다.
+HashSet.add() 메소드가 리턴값이 있는지 몰랐는데 다음에 비슷한 문제를 풀 때 적용하면 좋을 것 같다.
