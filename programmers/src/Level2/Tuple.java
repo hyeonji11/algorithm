@@ -6,7 +6,10 @@ public class Tuple {
     public int[] solution(String s) {
         HashMap<String, Integer> hm = new HashMap<>();
         String str[] = s.replaceAll("[{}]", "").split(",");
-
+        /*
+        Arrays.sort(arr, (a, b)->{return a.length() - b.length();});
+        람다식을 이용해 간단하게 길이를 기준으로 정렬 가능
+         */
         for(int i=0; i<str.length; i++) {
             if(hm.containsKey(str[i])) {
                 int count = hm.get(str[i]);
