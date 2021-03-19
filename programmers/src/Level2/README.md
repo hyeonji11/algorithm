@@ -142,3 +142,18 @@ String str[] = s.replaceAll("[{}]", "").split(",");
 
 다른 사람의 풀이를 보니 HashSet을 이용하면 더 간단하게 풀 수 있었다. HashSet에 add() 메소드는 인자로 전달된 아이템이 HashSet에 없다면 true, 있다면 false를 리턴하기 때문에 이 특성을 이용해서 풀 수 있다.
 HashSet.add() 메소드가 리턴값이 있는지 몰랐는데 다음에 비슷한 문제를 풀 때 적용하면 좋을 것 같다.
+
+## 10. 영어 끝말잇기(EnglishWordChain.java)
+
+문제의 끝말있기에서 탈락자가 발생하는 조건은 앞 단어의 마지막 문자로 단어를 시작하지 않을 때와 등장했던 단어를 또 사용할 때이다.
+
+앞 단어의 마지막 문자로 단어를 시작하는것은 String 클래스의 endsWith() 메소드를 이용해 확인했고, 중복되는 단어는 HashSet의 add() 메소드를 이용해 확인했다.
+```
+for(int i=1; i<words.length; i++) {
+  if(!words[i-1].endsWith(words[i].substring(0, 1)) || !hs.add(words[i)) {
+    answer[0] = (i+1)%n == 0 ? n : (i+1)%n;
+    answer[1] = i/n +1;
+    break;
+  }
+}
+```
