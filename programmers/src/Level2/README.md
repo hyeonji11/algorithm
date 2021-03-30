@@ -157,3 +157,18 @@ for(int i=1; i<words.length; i++) {
   }
 }
 ```
+
+## 11. 땅따먹기(Ttangttameokgi.java)
+
+DP문제를 처음 풀어봐서 처음엔 답을 보고 2주 뒤에 다시 풀어 봤다.
+푼 방식은 이전 행에서 최대값을 다음 행의 숫자들에 더하는 방식이다. 단, 연속으로 같은 열에서 선택할 수 없기 때문에 현재 2열에 있다면 2열을 뺀 나머지 열에서 최대값을 선택해 현재2열에 더한다.
+
+이 문제는 4열로 열의 수가 고정되어 있지만 만약 고정되지 않은 비슷한 문제가 있다면 최대값을 구하는 코드를 Math.max() 대신 다른 코드로 바꾸면 될 것 같다.
+```
+for(int i=1; i<land.length; i++) {
+  land[i][0] += Math.max(land[i-1][1], Math.max(land[i-1][2], land[i-1[3]));
+  land[i][1] += Math.max(land[i-1][0], Math.max(land[i-1][2], land[i-1[3]));
+  land[i][2] += Math.max(land[i-1][0], Math.max(land[i-1][1], land[i-1[3]));
+  land[i][3] += Math.max(land[i-1][0], Math.max(land[i-1][1], land[i-1[2]));
+}
+```
