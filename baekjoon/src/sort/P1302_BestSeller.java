@@ -23,7 +23,7 @@ public class P1302_BestSeller {
         }
 
         List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(books.entrySet());
-
+/*
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -31,6 +31,7 @@ public class P1302_BestSeller {
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
+
         int max = list.get(0).getValue();
 
         for(int i=list.size()-1; i>0; i--) {
@@ -47,6 +48,18 @@ public class P1302_BestSeller {
                 }
             });
         }
+*/
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o2.getValue()>o1.getValue()) return 1;
+                else if(o2.getValue().equals(o1.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return -1;
+            }
+        });
+
         System.out.println(list.get(0).getKey());
     }
 }
