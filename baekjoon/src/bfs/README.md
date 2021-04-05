@@ -60,3 +60,39 @@ if(area[arr[1]][arr[0]] == 1) {
   }
 }
 ```
+
+## 3. 트리의 부모 찾기(FindTreeParent.java)
+
+이 문제에서는 값들을 입력받을 때 처음으로 StringTokenizer를 사용해봤다.
+지금까지는 항상 BufferedReader로 받은 다음 split 메소드로 문자열을 잘라서 사용했는데 split은 정규식을 기반으로 자르기 때문에 내부가 복잡하고 StringTokenizer의 nextToken 메소드는 공백 자리를 땡겨서 채우는 방식이기 때문에 정규식 처리가 필요 없다면 StringTokenizer를 사용하는게 더 빠르다고 한다.
+
+실제로 StringTokenizer를 썼을때와 안썼을 때의 풀이 결과를 비교하면 시간이 줄어들었다. 또한, BufferedReader와 split()메소드를 사용했을 때는 String 배열에 잘라진 문자열을 저장해야 돼서 메모리를 추가로 사용했는데 StringTokenizer를 사용했을 때는 String 배열을 사용하지 않아서 메모리도 절약할 수 있었다.
+
+연결된 정점을 표시하는 것은 ArrayList<Integer> 타입의 배열을 만들어서 배열의 인덱스를 정점으로 생각하고 그 정점과 연결된 정점들을 ArrayList에 넣어서 배열에 저장하는 형식으로 구현했다.
+```
+StringTokenizer st;
+ArrayList<Integer> list[] = new ArrayList[vertex+1];
+int v1, v2;
+for(int i=0; i<vertex-1; i++) {
+  st = new StringTokenizer(br.readLine());
+  //String str[] = br.readLine().split(" ");  //StringTokenizer를 사용하지 않을 때 한줄씩 입력받을 때마다 Stirng 배열을 새로 생성하기 때문에 메모리를 차지함
+  v1 = Integer.parseInt(st.nextToken());
+  v2 = Integer.parseInt(st.nextToken());
+  list[v1].add(v2);
+  list[v2].add(v1);
+}
+```
+
+부모 노드의 번호는 parent 배열에 저장했다.
+부모를 확인하는 과정은 1)큐에서 뺀 노드번호를 list의 인덱스로 써서 그 노드와 연결된 노드들을 확인하고 2)만약 연결된 노드들의 부모 노드가 저장되지 않았다면 3)저장한 후 그 노드들을 큐에 넣는 식으로 구현했다.
+```
+q.offer(1);
+while(!q.isEmpty()) {
+  int key = q.poll();
+  for(int num: list[key]) {   // 1)
+    if(parent[num] != 0) continue;    // 2)
+    parent[num] = key;    // 3)
+    q.offer(num);
+  }
+}
+```
