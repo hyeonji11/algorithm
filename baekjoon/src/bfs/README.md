@@ -96,3 +96,35 @@ while(!q.isEmpty()) {
   }
 }
 ```
+
+## 4. 미로 탐색(MazeSearch.java)
+
+이 문제는 예전에 비슷한 문제를 푼 적이 있어서 비슷한 방식으로 풀어냈다.
+
+구현 순서는
+1) 입력받기
+2) 지나는 칸 수 세기
+
+1번은 입력을 2차원 int 배열에 저장하는 것으로 구현했다.
+평소 사용하던 코드는 BufferedReader를 사용해 한줄씩 받은 후 split() 메소드로 한글자씩 배열에 저장해서 Integer로 변환하는 방식이다.
+```
+String[] arr;
+for(int i=0; i < row; i++) {
+  arr = br.readLine().split("");
+  for(int j=0; j<col; j++) {
+    maze[i][j] = Integer.parseInt(arr[j]);
+  }
+}
+```
+하지만 정규식이 시간복잡도가 높다는 것을 알게 되고 아래 코드로 바꿔서 채점해보니 시간과 메모리 둘 다 절약할 수 있게 되었다. 메모리는 String 배열을 매번 생성하지 않아서 줄어든 것 같다.
+```
+for(int i=0; i < row; i++) {
+  String str = br.readLine();
+  for(int j=0; j<col; j++) {
+    maze[i][j] = str.charAt(j) - '0';
+  }
+}
+```
+
+2번은 좌표가 들어간 큐를 돌면서 다음 좌표의 값이 1이면 큐에 좌표를 넣고 다음 좌표의 값에 현재 좌표값+1을 넣도록 구현했다.
+반복문을 돌고 난 뒤에는 (N, M)의 좌표를 출력하면 지나온 칸의 수를 알 수 있다. 
