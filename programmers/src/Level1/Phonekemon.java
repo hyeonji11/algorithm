@@ -1,14 +1,12 @@
 package Level1;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 public class Phonekemon {
     public int solution(int[] nums) {
         int answer = 0;
 
-        //Integer[] resultArr = Arrays.stream(nums).distinct().toArray(Integer[]::new);
+        //int[] resultArr = Arrays.stream(nums).distinct().toArray(int[]::new);
 
         HashSet<Integer> hs = new HashSet<>();
         for(int i=0; i<nums.length; i++) {
@@ -17,11 +15,8 @@ public class Phonekemon {
 
         int num = hs.size();
         int len = nums.length/2;
-        if(len <= num) {
-            answer = len;
-        } else if(len > num) {
-            answer = num;
-        }
+        answer = len <= num ? len : num;
+
 
 
         return answer;
