@@ -7,7 +7,6 @@ public class xIntervalNumbers {
         for(int i=0; i<n; i++) {
             answer[i] = num;
             num += x;
-            //System.out.println(answer[i]);
         }
         return answer;
     }

@@ -8,7 +8,6 @@ public class ToStringFromNumberReverse {
 
         for(int i=1; i<=str.length(); i++) {
             answer[len-i] = str.charAt(i-1)-'0';
-            //System.out.println(answer[len-i]);
         }
         return answer;
     }
