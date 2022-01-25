@@ -1,21 +1,6 @@
 package Level1;
 
 public class SecretMap {
-    /*
-    public int[][] decode(int[] arr) {
-        int n = arr.length;
-        int[][] res = new int[n][n];
-        for(int i=0; i<n; i++) {
-            for(int j=n-1; j>=0; j--) {
-                res[i][j] = arr[i] % 2;
-                arr[i] /= 2;
-                if(arr[i] == 0)
-                    break;
-            }
-        }
-        return res;
-    }
-    */
     public String[] solution(int n, int[] arr1, int[] arr2) {
         String[] answer = new String[n];
 
