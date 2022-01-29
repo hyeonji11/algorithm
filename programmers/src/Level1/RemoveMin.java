@@ -1,12 +1,8 @@
 package Level1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class RemoveMin {
     public int[] solution(int[] arr) {
         int[] answer;
-        ArrayList<Integer> list = new ArrayList(Arrays.asList(arr));
 
         int minIdx = 0;
         int min = Integer.MAX_VALUE;
@@ -16,21 +12,20 @@ public class RemoveMin {
             return answer;
         }
 
-//        for(Integer i: list) {
-//            System.out.println(i);
-//        }
-        System.out.println(list);
-
         for(int i=0; i<arr.length; i++) {
-            if(arr[i] < min) {
+            if(min > arr[i]) {
                 min = arr[i];
                 minIdx = i;
-                System.out.println("min: "+min);
             }
         }
 
-        list.remove(minIdx);
-        answer = list.stream().mapToInt(i->i).toArray();
+        answer = new int[arr.length-1];
+        int num = 0;
+        for(int i=0; i<arr.length; i++) {
+            if(i == minIdx) continue;
+            answer[num] = arr[i];
+            num++;
+        }
 
         return answer;
     }
