@@ -8,13 +8,6 @@ public class GCD_LCM {
     public int[] solution(int n, int m) {
         int[] answer = new int[2];
 
-        /*
-        int num = n < m ? n : m;
-        for(int i=1; i<=num; i++) {
-            if(n % i==0 && m%i == 0) {
-                answer[0] = i;
-            }
-        }*/
         answer[0] = n < m ? gcd(m, n) : gcd(n, m);
         answer[1] = n * m / answer[0];
 
