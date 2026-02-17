@@ -9,7 +9,7 @@ public class P12904 {
         // 뒤에 A를 추가한다
         // 문자열을 뒤집고 뒤에 B를 추가한다. => 문자 추가 포인터를 뒤면 앞으로, 앞이면 뒤로 바꾸고 거기에 B를 추가
 
-        // 포인터가 앞or뒤 두개로 시작해야됨
+        // 포인터가 앞 or 뒤 두개로 시작해야됨
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
